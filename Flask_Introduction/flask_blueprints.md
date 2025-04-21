@@ -59,3 +59,20 @@ app.register_blueprint(my_blueprint, url_prefix='/my_blueprint')
 </body>
 </html>
 ```
+
+
+
+## EXAMPLE OF A BLUEPRINT
+
+```python
+from flask import Flask, Blueprint, render_template
+from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
+from flask_wtf import FlaskForm
+from wtforms import StringField, TextAreaField, BooleanField, SubmitField
+from wtforms.validators import DataRequired, Length
+from flask import flash, redirect, url_for
+from flask import request
+from flask import jsonify
+from flask import make_response
+from flask import session
