@@ -76,3 +76,75 @@ from flask import request
 from flask import jsonify
 from flask import make_response
 from flask import session
+
+
+## Example of a Flask application with a blueprint
+app = Flask(__name__)
+app.config['SECRET_KEY'] = 'your_secret
+_key_here'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///example.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db = SQLAlchemy(app)
+migrate = Migrate(app, db)
+# Define your models
+class Task(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(100), nullable=False)
+    description = db.Column(db.Text, nullable=True)
+    completed = db.Column(db.Boolean, default=False)
+    user_id = db.Column(db.Integer, nullable=False)
+    def __repr__(self):
+        return f'<Task {self.title}>'
+class TaskForm(FlaskForm):
+    title = StringField('Title', validators=[DataRequired(), Length(max=100)])
+    description = TextAreaField('Description')
+    completed = BooleanField('Completed')
+    submit = SubmitField('Create Task')
+# Create a blueprint    
+my_blueprint = Blueprint('my_blueprint', __name__)
+# Define your routes
+@my_blueprint.route('/create-task', methods=['GET', 'POST'])
+def create_task():
+    form = TaskForm()
+    if form.validate_on_submit():
+        new_task = Task(
+            title=form.title.data,
+            description=form.description.data,
+            completed=form.completed.data,
+            user_id=1  # Replace with actual user ID logic
+        )
+        db.session.add(new_task)
+        db.session.commit()
+        flash('Task created successfully!')
+        return redirect(url_for('my_blueprint.create_task'))
+    return render_template('create_task.html', form=form)
+@my_blueprint.route('/tasks')
+def list_tasks():
+    tasks = Task.query.all()
+    return render_template('list_tasks.html', tasks=tasks)
+# Register the blueprint
+app.register_blueprint(my_blueprint, url_prefix='/my_blueprint')
+# Run the application
+if __name__ == '__main__':
+    db.create_all()  # Create the database tables
+    app.run(debug=True)
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Task</title>
+</head>
+<body>
+    <h1>Create a New Task</h1>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <p>{{ form.title.label }} {{ form.title() }}</p>
+        <p>{{ form.description.label }} {{ form.description() }}</p>
+        <p>{{ form.completed.label }} {{ form.completed() }}</p>
+        <p>{{ form.submit() }}</p>
+    </form>
+</body>
+</html>
+
