@@ -148,3 +148,29 @@ if __name__ == '__main__':
 </body>
 </html>
 
+
+
+## Example Project Structure
+
+myapp/
+├── app/
+│   ├── __init__.py
+│   ├── blog/
+│   │   ├── __init__.py
+│   │   ├── routes.py
+│   │   └── templates/
+│   │       └── blog_home.html
+│   ├── auth/
+│   │   └── routes.py
+│   └── templates/
+├── run.py
+
+## Best Practices
+
+    Use a blueprint for each feature (e.g., auth, dashboard, api).
+
+    Keep routes, forms, models, templates, static files together for each blueprint.
+
+    Name your blueprint with a clear namespace ('auth', 'admin', etc.).
+
+
