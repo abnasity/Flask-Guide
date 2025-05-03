@@ -2,8 +2,24 @@
 ### Bootstrap 5 Carousel
 <!-- Bootstrap 5 Carousel Example -->
 
+<!-- Include Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Include Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+
+
+
+
 <div class="container my-5">
   <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+
+  -Carousel inner is impoertant to add the slides
+  -Carousel item is important to add the slides
+  -Carousel controls are important to add the next and previous buttons
+  -Carousel indicators are important to add the dots
     
     <!-- Carousel Inner -->
     <div class="carousel-inner">
