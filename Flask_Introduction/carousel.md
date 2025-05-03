@@ -21,10 +21,11 @@
   -Carousel controls are important to add the next and previous buttons
   -Carousel indicators are important to add the dots
     
-    <!-- Carousel Inner -->
+##    <!-- Carousel Inner -->
     <div class="carousel-inner">
 
-      <!-- Slide 1 -->
+ #     <!-- Slide 1 -->
+
       <div class="carousel-item active">
         <div class="row align-items-center">
           <div class="col-md-6">
@@ -39,7 +40,7 @@
         </div>
       </div>
 
-      <!-- Slide 2 -->
+   #    <!-- Slide 2 -->
       <div class="carousel-item">
         <div class="row align-items-center">
           <div class="col-md-6">
@@ -54,7 +55,7 @@
         </div>
       </div>
 
-      <!-- Slide 3 -->
+ #     <!-- Slide 3 -->
       <div class="carousel-item">
         <div class="row align-items-center">
           <div class="col-md-6">
@@ -69,7 +70,7 @@
         </div>
       </div>
 
-      <!-- Slide 4 -->
+ #     <!-- Slide 4 -->
       <div class="carousel-item">
         <div class="row align-items-center">
           <div class="col-md-6">
@@ -84,9 +85,9 @@
         </div>
       </div>
 
-    </div> <!-- /.carousel-inner -->
+  #  </div> <!-- /.carousel-inner -->
 
-    <!-- Controls -->
+  #  <!-- Controls -->
     <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Previous</span>
