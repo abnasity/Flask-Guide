@@ -12,3 +12,17 @@ Example:
 templates/
   └── index.html
     └── about.html
+
+# __init__.py	
+- Initializes app and extensions
+This is where you:
+
+    Initialize the Flask app
+
+    Set configurations
+
+    Connect to the database
+
+    Register blueprints
+
+    Register error handlers
