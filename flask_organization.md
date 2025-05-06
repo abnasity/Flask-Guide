@@ -26,3 +26,33 @@ This is where you:
     Register blueprints
 
     Register error handlers
+
+    # *****example****
+ from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
+
+db = SQLAlchemy()
+
+def create_app():
+    app = Flask(__name__)
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
+    db.init_app(app)
+
+    from .routes import main
+    app.register_blueprint(main)
+
+    return app
+
+# models.py
+	- Database models using SQLAlchemy
+
+    Used with Flask-SQLAlchemy.
+
+# ****Example:
+
+from . import db
+
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(150), nullable=False)
+    email = db.Column(db.String(150), unique=True, nullable=False)
