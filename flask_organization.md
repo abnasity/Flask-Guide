@@ -56,3 +56,18 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(150), nullable=False)
     email = db.Column(db.String(150), unique=True, nullable=False)
+
+# routes.py	
+- URL routes and logic
+
+Purpose: Defines routes/URLs and what happens when a user visits them.
+
+Example:
+
+from flask import Blueprint, render_template
+
+main = Blueprint('main', __name__)
+
+@main.route('/')
+def home():
+    return render_template('index.html')
