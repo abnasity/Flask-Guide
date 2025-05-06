@@ -71,3 +71,15 @@ main = Blueprint('main', __name__)
 @main.route('/')
 def home():
     return render_template('index.html')
+    
+# run.py	
+- Starts the Flask server
+
+# *******Example:
+
+from myapp import create_app
+
+app = create_app()
+
+if __name__ == '__main__':
+    app.run(debug=True)
