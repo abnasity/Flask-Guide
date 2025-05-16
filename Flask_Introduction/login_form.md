@@ -82,3 +82,24 @@ def dashboard():
 #   - RoleMixin: Provides role-based access control.
 # - You can create your own custom UserMixins to add specific functionality to your user models.
 # - Example of a custom UserMixin:
+
+## 🚀 Methods Provided by UserMixin
+
+By inheriting from UserMixin, your user model gets:
+
+Method/Property	Purpose
+is_authenticated	Returns True if the user is authenticated.
+is_active	Returns True if the user's account is active.
+is_anonymous	Returns False for regular users (used for anonymous sessions).
+get_id()	Returns a unique ID for the user, usually used to load them from a DB.
+
+from flask_login import UserMixin
+
+class User(UserMixin, db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(150), unique=True, nullable=False)
+    email = db.Column(db.String(150), unique=True, nullable=False)
+    password = db.Column(db.String(150), nullable=False)
+    # Other fields...
+    def __repr__(self):
+        return f'<User {self.username}>'
