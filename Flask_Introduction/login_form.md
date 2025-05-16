@@ -153,3 +153,20 @@ Once a user has authenticated, you log them in with the login_user function.
 {% if current_user.is_authenticated %}
   Hi {{ current_user.name }}!
 {% endif %}
+
+## Views that require your users to be logged in can be decorated with the login_required decorator:
+
+@app.route("/settings")
+@login_required
+def settings():
+    pass
+
+# When the user is ready to log out:
+
+@app.route("/logout")
+@login_required
+def logout():
+    logout_user()
+    return redirect(somewhere)
+
+# They will be logged out, and any cookies for their session will be cleaned up.
