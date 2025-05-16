@@ -1,0 +1,70 @@
+## Here are the steps for creating a login form in flask
+ 1) Create the login form
+    # forms.py
+from flask_wtf import FlaskForm
+from wtforms import StringField, PasswordField, SubmitField
+from wtforms.validators import DataRequired, Email
+
+class LoginForm(FlaskForm):
+    email = StringField('Email', validators=[DataRequired(), Email()])
+    password = PasswordField('Password', validators=[DataRequired()])
+    submit = SubmitField('Login')
+
+2) Create a view in flask
+# app.py
+__init__.py
+from flask import Flask, render_template, redirect, url_for, flash
+from forms import LoginForm
+
+app = Flask(__name__)
+app.secret_key = 'your_secret_key'
+
+# routes.py
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    form = LoginForm()
+    if form.validate_on_submit():
+        # You would typically check the user's email/password here
+        flash(f'Logged in as {form.email.data}', 'success')
+        return redirect(url_for('dashboard'))
+    return render_template('login.html', form=form)
+
+@app.route('/dashboard')
+def dashboard():
+    return "Welcome to your dashboard!"
+
+
+# Create the login template
+
+<!-- templates/login.html -->
+<!doctype html>
+<html>
+<head><title>Login</title></head>
+<body>
+  <h1>Login</h1>
+  <form method="POST">
+    {{ form.hidden_tag() }}
+
+    <p>
+      {{ form.email.label }}<br>
+      {{ form.email(size=32) }}<br>
+      {% for error in form.email.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+      {% endfor %}
+    </p>
+
+    <p>
+      {{ form.password.label }}<br>
+      {{ form.password(size=32) }}<br>
+      {% for error in form.password.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+      {% endfor %}
+    </p>
+
+    <p>{{ form.submit() }}</p>
+  </form>
+</body>
+</html>
+
+
+# NB - Add Flask-Login for session management and access control.
