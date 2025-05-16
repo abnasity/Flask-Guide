@@ -55,4 +55,15 @@
 # -This will switch you to the new database, and you can start creating tables and inserting data.
 # -->
 # ## Creating a Table
-# -To create a new table in PostgreSQL, you can use the following command: -->
+-To create a new table in PostgreSQL, you can use the following command: -->
+# ```sql
+ CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+ name VARCHAR(80) NOT NULL,
+ email VARCHAR(120) UNIQUE NOT NULL
+# );
+# ```
+-This command creates a new table called `users` with three columns: `id`, `name`, and `email`.
+ -The `id` column is of type `SERIAL`, which automatically generates a unique identifier for each row.
+ -The `name` column is of type `VARCHAR(80)`, which can store strings up to 80 characters long.
+ -The `email` column is of type `VARCHAR(120)` and must be unique for each user.
