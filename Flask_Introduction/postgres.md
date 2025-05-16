@@ -67,3 +67,11 @@
  -The `id` column is of type `SERIAL`, which automatically generates a unique identifier for each row.
  -The `name` column is of type `VARCHAR(80)`, which can store strings up to 80 characters long.
  -The `email` column is of type `VARCHAR(120)` and must be unique for each user.
+#
+# ## Inserting Data
+# -To insert data into the `users` table, you can use the following command:
+# ```sql
+# INSERT INTO users (name, email) VALUES ('John Doe', 'johndoe@gmail.com');
+# ```   
+
+#   
