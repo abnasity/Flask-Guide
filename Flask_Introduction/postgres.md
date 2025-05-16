@@ -77,4 +77,50 @@
 # CREATING FORMS IN FLASK
 - Creating forms in Flask is commonly done using Flask-WTF, a Flask extension that integrates WTForms with Flask.
 # Step by step guide to creating and using forms in Flask
--install flask-WTF
+1) install flask-WTF by using pip install flask-wtf
+2) add a secret key for basic protection
+           from flask import Flask
+
+    app = Flask(__name__)
+    app.secret_key = 'your_secret_key'
+3) create a formclass by using the subclass FlaskForm
+from flask_wtf import FlaskForm
+from wtforms import StringField, SubmitField
+from wtforms.validators import DataRequired
+
+class NameForm(FlaskForm):
+    name = StringField('Your Name', validators=[DataRequired()])
+    submit = SubmitField('Submit')
+
+4) create a view and render the form
+         from flask import render_template, redirect, url_for
+        from forms import NameForm
+
+        @app.route('/', methods=['GET', 'POST'])
+        def index():
+            form = NameForm()
+            if form.validate_on_submit():
+                name = form.name.data
+                return redirect(url_for('success', name=name))
+            return render_template('index.html', form=form)
+
+        @app.route('/success/<name>')
+        def success(name):
+            return f'Hello, {name}!'
+
+
+5) Create an html template to render
+
+            <!doctype html>
+        <html>
+        <head><title>Flask Form</title></head>
+        <body>
+        <form method="POST">
+            {{ form.hidden_tag() }}
+            {{ form.name.label }} {{ form.name(size=20) }}
+            {{ form.submit() }}
+        </form>
+        </body>
+        </html>
+
+## NB - Always include {{ form.hidden_tag() }} for CSRF protection.
