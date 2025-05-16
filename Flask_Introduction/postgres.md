@@ -41,8 +41,8 @@
 # ```
 # -Replace `username` with your PostgreSQL username and `database_name` with the name of your database.
 # -Once you are in the shell, you can run SQL commands to interact with your database.
-<!-- #
-# ## Creating a Database
+
+-- # ## Creating a Database
 # -To create a new database in PostgreSQL, you can use the following command in the PostgreSQL shell:
 # ```sql
 # CREATE DATABASE database_name;
@@ -53,6 +53,6 @@
 # \c database_name;
 # ```
 # -This will switch you to the new database, and you can start creating tables and inserting data.
-#
+# -->
 # ## Creating a Table
 # -To create a new table in PostgreSQL, you can use the following command: -->
