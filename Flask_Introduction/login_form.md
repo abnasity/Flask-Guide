@@ -148,3 +148,8 @@ Once a user has authenticated, you log them in with the login_user function.
   #      return flask.redirect(next or flask.url_for('index'))
  #   return flask.render_template('login.html', form=form)
 
+# Warning: You MUST validate the value of the next parameter. If you do not, your application will be vulnerable to open redirects. For an example implementation of url_has_allowed_host_and_scheme
+
+{% if current_user.is_authenticated %}
+  Hi {{ current_user.name }}!
+{% endif %}
