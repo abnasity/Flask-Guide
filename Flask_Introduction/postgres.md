@@ -74,4 +74,7 @@
 # INSERT INTO users (name, email) VALUES ('John Doe', 'johndoe@gmail.com');
 # ```   
 
-#   
+# CREATING FORMS IN FLASK
+- Creating forms in Flask is commonly done using Flask-WTF, a Flask extension that integrates WTForms with Flask.
+# Step by step guide to creating and using forms in Flask
+-install flask-WTF
