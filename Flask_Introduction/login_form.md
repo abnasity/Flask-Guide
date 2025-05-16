@@ -87,7 +87,7 @@ def dashboard():
 
 By inheriting from UserMixin, your user model gets:
 
-Method/Property	Purpose
+# Method/Property	Purpose
 is_authenticated	Returns True if the user is authenticated.
 is_active	Returns True if the user's account is active.
 is_anonymous	Returns False for regular users (used for anonymous sessions).
