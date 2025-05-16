@@ -92,3 +92,27 @@ def login():
 
 ## NB - Use Flask-Login for user session management.
 
+## ✅ Key Fixes
+
+    Indentation: Both print(...) and return render_template(...) must be inside the register() function.
+
+    Used username instead of first_name in flash() if first_name doesn’t exist on your model.
+
+ ##   # REGISTRATION ROUTE
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    form = RegistrationForm()
+    
+    if form.validate_on_submit():
+        new_user = User(
+            username=form.username.data,
+            email=form.email.data,
+            password=form.password.data
+        )
+        db.session.add(new_user)
+        db.session.commit()
+        flash(f'{new_user.username} successfully registered!', 'success')
+        return redirect(url_for('register'))
+
+    print(form.errors)  # ✅ Indented properly inside the function
+    return render_template('register.html', title='Register', user_form=form)
