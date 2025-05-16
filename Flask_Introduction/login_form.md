@@ -68,3 +68,17 @@ def dashboard():
 
 
 # NB - Add Flask-Login for session management and access control.
+
+
+## UserMixins
+-UserMixin is a helper class provided by Flask-Login. When you add it to your user model, it automatically provides default implementations for the methods Flask-Login needs.
+
+
+# - UserMixins are a set of mixin classes that can be used to add common user-related functionality to your models.
+# - They are typically used in conjunction with Flask-Login to manage user authentication and authorization.
+# - Common UserMixins include:
+#   - UserMixin: Provides basic user authentication methods.
+#   - AnonymousUserMixin: Represents an anonymous user.
+#   - RoleMixin: Provides role-based access control.
+# - You can create your own custom UserMixins to add specific functionality to your user models.
+# - Example of a custom UserMixin:
